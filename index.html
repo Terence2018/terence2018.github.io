@@ -1,17 +1,370 @@
-<!DOCTYPE html>
-<!-- <html>
-<body>
-<h1>Hello World</h1>
-</body>
-</html> -->
-
-<html lang="en">
+<!-- <html lang="en">
     <head>
         <meta charset="UTF-8">
         <script>window.location.href = 'https://github.com/Terence2018';</script>
         <title>Redirecting...</title>
     </head>
+
     <body>
         <p>If you are not redirected automatically, click <a href="https://github.com/Terence2018">here</a>.</p>
     </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll snapping container */
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .container {
+            scroll-snap-type: y mandatory; /* Enables vertical scroll snapping */
+            overflow-y: scroll;
+            height: 100vh;
+        }
+
+        #home { background: #3d3d3da7; }
+        #about { background: #593779a7; }
+        #projects { background: #377958a7; }
+        #game_development { background: #3c3779a7; }
+        #contact { background: #793737a7; }
+
+        /* Center Justify Home Section */
+        #home, #contact {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: white;
+            scroll-snap-align: start;
+            text-align: center;
+            padding: 20px;
+
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            font-size: 2rem;
+            color: white;
+            scroll-snap-align: start;
+            text-align: left;  
+            padding: 35px;
+            overflow: hidden;
+        }
+
+        /* section h1, section p {
+            margin: 10px 0;
+        } */
+
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.65);
+            padding: 10px 20px;
+            border-radius: 8px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #00d095;
+        }
+
+        body {
+            background-image: url("/images/background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            backdrop-filter: blur(1px);
+        }
+
+        /* section {
+            opacity: 0;
+            transition: opacity 0.8 ease-in-out;
+        }
+        .container section:target {
+            opacity: 1;
+        } */
+
+        /* nav::after {
+            content: "";
+            display: block;
+            height: 4px;
+            width: 100px;
+            background: yellow;
+            margin: auto;
+            transition: width 0.3s;
+        }
+        nav a:hover::after {
+            width: 150px;
+        } */
+
+        section h2{
+            padding: 10px;
+        }
+
+        .section-card {
+            padding: 30px;
+            width: 100%;
+            border-radius: 25px;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(5px);
+            margin: 5px;
+            overflow-y:auto;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        skill-cards {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: left;
+            gap: 15px;
+        }
+
+        .skill-card {
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(5px);
+            font-size: 24px;
+        }
+
+        .project-card {
+            display:flex;
+            flex-direction: row;
+            gap: 15px;
+            padding: 30px;
+            width: 100%;
+            border-radius: 25px;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(5px);
+            margin: 5px;
+            /* transition: transform 0.15s ease-in-out; */
+            /* overflow-y: auto; */
+            height: 200px;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card a img {
+            width: 150px; 
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        project-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        game-cards {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            /* flex-wrap: wrap; */
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .game-card {
+            padding: 30px;
+            /* width: 400px; */
+            width: 30%;
+            border-radius: 25px;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(5px);
+
+            /* white-space: nowrap; */
+            /* overflow: hidden; */
+            /* text-overflow: ellipsis; */
+            gap: 15px;
+            transition: transform 0.15s ease-in-out;
+        }
+
+        .game-card img {
+            /* width: 340px; */
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .game-card:hover {
+            transform: scale(1.025);
+            /* cursor: pointer; */
+        }
+
+        .contact-card {
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(5px);
+            font-size: 24px;
+        }
+
+        .contact-card a {
+            color: rgb(255, 43, 43);
+        }
+        
+    </style>
+
+    <!-- Webpage Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind">
+    <style> body {font-family: 'Hind', sans-serif;}</style>
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#game_development">Games</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Scroll Snapping Sections -->
+    <div class="container">
+
+        <section id="home">
+            <h1 style="font-size: 100px">Terence Ting</h1>
+            <p style="font-size: 32px">Data Analyst | Programmer | Game Developer</p>
+        </section>
+
+        <section id="about">
+            <h2>> About Me</h2>
+            <div class="section-card" style="font-size: 24px;">
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+                <p>Hi, I'm Terence, a passionate developer specializing in data science and machine learning. I enjoy learning and experimenting with new technologies, as well as solving complex problems with code. I'm most proficient with the languages listed below, but I'm always looking out for new opportunities to explore new languages.</p>
+                <p>I enjoy the challenge and process of turning an idea into reality, and I find that programming is the best way for me to achive those goals. While my background in Cognitive Science focuses more on programming and data analytics, I enjoy programming in my off-time as well in the form of game development.</p>
+                <p>Please check out some of my projects down below, and feel free to contact me for any questions. I'd be happy to answer them.</p>
+            </div>
+
+            <h2>> Skills</h2>
+            <skill-cards>
+                <div class="skill-card">Java</div>
+                <div class="skill-card">Python | Pandas | NumPy</div>
+                <div class="skill-card">Scikit-Learn</div>
+                <div class="skill-card">R | RStudio</div>
+                <div class="skill-card">HTML | CSS</div>
+                <div class="skill-card">GDScript | Godot</div>
+            </skill-cards>
+        </section>
+
+        <section id="projects">
+            <h2>> Projects</h2>
+            <div class="project-card">
+                <a href="https://unsplash.com/photos/avocado-tomatoes-eggs-mushrooms-spring-onions-and-leaves-uQs1802D0CQ"><img src="/images/food.png"></a>
+                <project-text>
+                    <h3 style="font-size: 22px">Supervised Food Recognition Models</h3>
+                    <!-- <p style="font-size: 16px">Lorem ipsum odor amet, consectetuer adipiscing elit. Penatibus parturient ridiculus primis purus diam convallis sagittis at. Turpis purus varius tempus nec duis libero id. Morbi tristique himenaeos morbi semper arcu lacus litora leo. Integer phasellus libero arcu habitant morbi sagittis ultricies penatibus. Potenti aliquet hac turpis sed class semper leo.</p> -->
+                    <p style="font-size: 16px">Trained and compared the efficacy of several machine learning models in recognizing and grouping images of food. Of the three models we trained and tested, Convolutional Neural Networks consistently outperformed the K-Nearest Neighbors and Support Vector Machines algorithms as it offered a simplified algorithm with a low number of trainable parameters. While the SVM models managed to come close in terms of accuracy, the long time to train made it inefficient and costly.</p>
+                </project-text>
+            </div>
+            <div class="project-card">
+                <a href="https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-game-on-it-mSS2r9_RGgA"><img src="/images/tetris.png"></a>
+                <project-text>
+                    <h3 style="font-size: 22px">User Attention State Versus Gaming Ability</h3>
+                    <!-- <p style="font-size: 16px">Lorem ipsum odor amet, consectetuer adipiscing elit. Penatibus parturient ridiculus primis purus diam convallis sagittis at. Turpis purus varius tempus nec duis libero id. Morbi tristique himenaeos morbi semper arcu lacus litora leo. Integer phasellus libero arcu habitant morbi sagittis ultricies penatibus. Potenti aliquet hac turpis sed class semper leo.</p> -->
+                    <p style="font-size: 16px">Tested the correlation between a user's attention state and their gaming ability using Neurosky EEGs. We hypothesized that attention measure scores would be higher for inexperienced players and lower for experienced players as more experienced played may be less attentive as they are more familiar with the game. Our findings supported this hypothesis as well as showed periods of decreased attentiveness in both groups of players when clearing obstacles within the game, lowering stress levels.</p>
+                </project-text>
+            </div>
+            <div class="project-card">
+                <a href="https://stock.adobe.com/images/animal-shadows-on-the-flag-democrats-vs-republicans-are-in-ideological-duel-on-the-american-flag-in-american-politics-us-parties-are-represented-by-either-the-democrat-donkey-or-republican-elephant/525731389"><img src="/images/political.png"></a>
+                <project-text>
+                    <h3 style="font-size: 22px">Predicting Political Affiliation of US H.O.R. Members Through Stock Trades</h3>
+                    <!-- <p style="font-size: 16px">Lorem ipsum odor amet, consectetuer adipiscing elit. Penatibus parturient ridiculus primis purus diam convallis sagittis at. Turpis purus varius tempus nec duis libero id. Morbi tristique himenaeos morbi semper arcu lacus litora leo. Integer phasellus libero arcu habitant morbi sagittis ultricies penatibus. Potenti aliquet hac turpis sed class semper leo.</p> -->
+                    <p style="font-size: 16px">Examined the relationship between the political affiliation of US House of Representaive Memebers and the stocks they traded. Trained on the datasets of representatives and transactions of 2020-2021, our final Random Forest Classifier model achieved a 92% accuracy when classifying female representatives and a 87% accuracy when classifying male representatives. We found it likely that, due to the larger number of male representatives as well as the number of female Democrats compared to female Republicans, the model most likely gave more weight to female datapoints.</p>
+                </project-text>
+            </div>
+        </section>
+
+        <section id="game_development">
+            <h2>> Game Development</h2>
+            <game-cards>
+                <div class="game-card">
+                    <img src="/images/second chance.png" alt="sc@we thumnail">
+                    <a href="https://templarterentius.itch.io/second-chance-at-worlds-end" style="font-size: 22px; color: #00d095"><h3>Second Chance at World's End</h3></a>
+                    <p style="font-size: 20px">A game about regrets</p>
+                    <p style="font-size: 12px">Developed with Ren'Py</p>
+                </div>
+                <div class="game-card">
+                    <img src="/images/slice of life.png" alt="sol thumbnail">
+                    <a href="#" style="font-size: 22px; color: #ffffff"><h3>Slice of Life</h3></a>
+                    <p style="font-size: 20px">A pizzaria simulator with a strange twist</p>
+                    <p style="font-size: 12px">Developed with Godot</p>
+                </div>
+                <div class="game-card">
+                    <img src="/images/swordwing.png" alt="sw thumbnail">
+                    <a href="https://templarterentius.itch.io/swordwing" style="font-size: 22px; color: #72751c;"><h3>SwordWing</h3></a>
+                    <p style="font-size: 20px">PirateSoftware Game Jam 16 Entry</p>
+                    <p style="font-size: 12px">Developed with Godot</p>
+                </div>
+            </game-cards>
+        </section>
+
+        <section id="contact">
+            <h1>Contact Me</h1>
+            <div class="contact-card">terence.ting704@gmail.com | <a href="https://github.com/Terence2018">GitHub</a> | <a href="https://www.linkedin.com/in/terence-ting/">LinkedIn</a></div>
+        </section>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default jump
+                const targetId = this.getAttribute('href'); // Get target section
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start' // Scrolls to the start of the section
+                });
+            });
+        });
+    </script>
+
+</body>
 </html>
